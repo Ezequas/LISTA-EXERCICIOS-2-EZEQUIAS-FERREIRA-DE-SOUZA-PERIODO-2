@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    
+    int numero_conta [100];
+    int tamanho = 100; 
+    int procurando; 
+    int encontrado = -1; 
+    int comparacao;
+    
+    for (int i = 0; i < tamanho; i++)
+    {numero_conta[i] = i + 1;}
+       
+       printf("Digite o número da sua conta 1 a 100: ");
+       scanf("%d",&procurando);
+       
+       
+       for (int i = 0; i < tamanho; i++){
+       comparacao++;
+     if (numero_conta[i] == procurando){
+           encontrado = i;
+        break;
+       }    
+     }      
+           
+    if (encontrado != -1) 
+    
+    {printf("a conta foi encontrada na posição %d\n ", encontrado);
+    printf("Os número de comparação foram necessarias foi de %d:\n\n",comparacao);}
+   
+    else {printf("a conta não existe\n");
+    
+    printf("o numero de comparação foram necessárias foi de %d",comparacao);}
+    
+    return 0;
+}
