@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char palavra[100];
+    char palavraAdivinhada[100];
+    char letra;
+    int tentativas = 0;
+    int maxTentativas;
+
+    printf("Digite a palavra secreta: ");
+    scanf("%s", palavra);
+
+    maxTentativas = strlen(palavra) + 2;
+
+    for (int i = 0; i < strlen(palavra); i++) {
+        palavraAdivinhada[i] = '_';
+    }
+    palavraAdivinhada[strlen(palavra)] = '\0';
+
+    printf("\033[H\033[J");
+
+    while (tentativas < maxTentativas) {
+        printf("Palavra: %s\n", palavraAdivinhada);
+        printf("Digite uma letra: ");
+        scanf(" %c", &letra);
+
+        int encontrada = 0;
+        for (int i = 0; i < strlen(palavra); i++) {
+            if (palavra[i] == letra) {
+                palavraAdivinhada[i] = letra;
+                encontrada = 1;
+            }
+        }
+
+        if (!encontrada) {
+            tentativas++;
+        }
+
+        printf("Tentativas restantes: %d\n", maxTentativas - tentativas);
+
+        if (strcmp(palavra, palavraAdivinhada) == 0) {
+            printf("Parabéns! Você adivinhou a palavra: %s\n", palavra);
+            return 0;
+        }
+    }
+
+    printf("Você perdeu! A palavra era: %s\n", palavra);
+    return 0;
+}
