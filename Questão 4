@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    int primos[100];
+   int encontrado = 0; 
+    
+    for (int i = 2; i <= 100; i++) {
+              int primo = 1;
+       for (int a = 2; a < i; a++) {
+               if (i % a == 0) {
+         primo = 0;
+                  break;
+            }
+        }
+        if (primo) {
+            primos[encontrado] = i;
+            encontrado++;
+        }
+    }    
+    
+         int numero; 
+    printf("Digite um número para verificar se é primo: ");
+           scanf("%d", &numero);
+       
+     int analisa = 0;
+      for (int i = 0; i < encontrado; i++) {
+           if (primos[i] == numero) {
+                analisa = 1;
+                      break;
+       }
+    }  
+           
+    if (analisa) {
+        printf("O número %d é primo e está na lista.\n", numero);
+    } else {
+        printf("O número %d não é primo ou não está na lista.\n", numero);
+    }
+    
+    return 0;
+}
