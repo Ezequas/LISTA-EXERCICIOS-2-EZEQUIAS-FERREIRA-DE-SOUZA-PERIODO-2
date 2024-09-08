@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int crianca = 10;
+    int lista[crianca];
+    int nota = 1;
+    int nota2 = 5;
+    int contagem[nota2 + 1];
+
+    for (int i = 0; i <= nota2; i++) {
+        contagem[i] = 0;
+    }
+
+    srand(time(0)); 
+
+    for (int i = 0; i < crianca; i++) {
+        lista[i] = rand() % (nota2 - nota + 1) + nota;
+    }
+    for (int i = 0; i < crianca; i++) {
+        contagem[lista[i]]++;
+    }
+    printf("Frequência de notas atribuídas ao DVD da Xuxa foi de:\n");
+    for (int i = nota; i <= nota2; i++) {
+        printf("Nota %d: %d vezes\n", i, contagem[i]);
+    }
+
+    return 0;
+}
